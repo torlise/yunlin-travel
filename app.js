@@ -21,51 +21,52 @@ const tripStops = [
   {
     name: "集合出發",
     label: "第一步",
-    scheduledLabel: "原訂 08:00",
-    etaLabel: "集合",
-    start: "2026-09-22T08:00:00+08:00",
+    scheduledLabel: "原訂 08:30",
+    etaLabel: "集合出發",
+    start: "2026-09-22T08:30:00+08:00",
+    arrival: "2026-09-22T08:30:00+08:00",
     end: "2026-09-22T08:30:00+08:00",
-    nav: "https://maps.google.com/?q=童綜合醫療社團法人童綜合醫院沙鹿院區"
+    nav: "https://maps.google.com/?q=沙鹿火車站%20全國電子"
   },
   {
     name: "古坑綠色隧道",
     label: "下一站",
-    scheduledLabel: "原訂 09:30",
+    scheduledLabel: "原訂 09:45",
     etaLabel: "抵達，綠意步道漫步",
     start: "2026-09-22T08:30:00+08:00",
-    arrival: "2026-09-22T09:30:00+08:00",
-    end: "2026-09-22T10:40:00+08:00",
+    arrival: "2026-09-22T09:45:00+08:00",
+    end: "2026-09-22T10:30:00+08:00",
     nav: "https://maps.google.com/?q=古坑綠色隧道"
   },
   {
     name: "桂林映象會館",
     label: "下一站",
-    scheduledLabel: "原訂 11:00",
-    etaLabel: "午餐",
-    start: "2026-09-22T10:40:00+08:00",
-    arrival: "2026-09-22T11:00:00+08:00",
-    end: "2026-09-22T13:30:00+08:00",
+    scheduledLabel: "原訂 10:50",
+    etaLabel: "抵達，11:00 用餐",
+    start: "2026-09-22T10:30:00+08:00",
+    arrival: "2026-09-22T10:50:00+08:00",
+    end: "2026-09-22T13:15:00+08:00",
     nav: "https://maps.google.com/?q=桂林映象會館"
   },
   {
     name: "塔吉特千層蛋糕大使館",
     label: "下一站",
-    scheduledLabel: "原訂 14:00",
+    scheduledLabel: "原訂 13:45",
     etaLabel: "甜點 DIY / 下午茶",
-    start: "2026-09-22T13:30:00+08:00",
-    arrival: "2026-09-22T14:00:00+08:00",
-    end: "2026-09-22T16:00:00+08:00",
+    start: "2026-09-22T13:15:00+08:00",
+    arrival: "2026-09-22T13:45:00+08:00",
+    end: "2026-09-22T15:15:00+08:00",
     nav: "https://maps.google.com/?q=塔吉特千層蛋糕大使館"
   },
   {
     name: "啟程返家",
     label: "下一步",
-    scheduledLabel: "原訂 16:00",
-    etaLabel: "出發，約 17:15 返抵沙鹿",
-    start: "2026-09-22T16:00:00+08:00",
-    arrival: "2026-09-22T16:00:00+08:00",
-    end: "2026-09-22T17:15:00+08:00",
-    nav: "https://maps.google.com/?q=沙鹿"
+    scheduledLabel: "原訂 15:15",
+    etaLabel: "出發，預計 16:30 抵達沙鹿火車站",
+    start: "2026-09-22T15:15:00+08:00",
+    arrival: "2026-09-22T15:15:00+08:00",
+    end: "2026-09-22T16:30:00+08:00",
+    nav: "https://maps.google.com/?q=沙鹿火車站"
   }
 ];
 
@@ -193,7 +194,7 @@ async function loadWeather() {
 }
 
 function setupGatheringCountdown() {
-  const target = new Date("2026-09-22T08:00:00+08:00").getTime();
+  const target = new Date("2026-09-22T08:30:00+08:00").getTime();
 
   function renderCountdown() {
     const diff = target - Date.now();
@@ -268,7 +269,7 @@ function setupTripMode() {
         ...activeStop,
         label: "今日完成",
         scheduledLabel: "行程完成",
-        etaLabel: "已返程，記得帶齊伴手禮"
+        etaLabel: "已返程，記得帶齊保冰袋與伴手禮"
       };
     } else {
       activeStop = tripStops.find((stop) => now < getDelayedDate(stop.end)) || tripStops[tripStops.length - 1];
